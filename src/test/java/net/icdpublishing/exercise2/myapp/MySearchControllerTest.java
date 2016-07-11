@@ -202,6 +202,7 @@ public class MySearchControllerTest {
         r1 = new Record(p,sources);
         unsortedEngineInfo.add(r1);
 
+        //add test comment to file
         controller.handleRequest(request);
         verify(chargingService).charge(customerEmail, 1);
 
