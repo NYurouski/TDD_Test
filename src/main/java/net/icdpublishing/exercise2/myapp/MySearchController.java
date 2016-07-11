@@ -1,10 +1,7 @@
 package net.icdpublishing.exercise2.myapp;
 
-import java.util.Collection;
-import java.util.LinkedList;
-
+import java.util.*;
 import net.icdpublishing.exercise2.myapp.charging.services.ImaginaryChargingService;
-import net.icdpublishing.exercise2.myapp.customers.dao.CustomerDao;
 import net.icdpublishing.exercise2.myapp.customers.dao.CustomerNotFoundException;
 import net.icdpublishing.exercise2.myapp.customers.dao.HardcodedListOfCustomersImpl;
 import net.icdpublishing.exercise2.myapp.customers.domain.Customer;
@@ -81,6 +78,17 @@ public class MySearchController {
 	}
 	
 	private Collection<Record> getResults(SimpleSurnameAndPostcodeQuery query) {
-		return retrievalService.search(query);
+
+       Collection<Record> result = retrievalService.search(query);
+
+        Collections.sort((List)result, new Comparator<Record>(){
+            public int compare(Record o1, Record o2){
+                  return o1.getPerson().getSurname().compareTo(o2.getPerson().getSurname());
+            }
+        });
+
+		return result;
 	}
+
+
 }
