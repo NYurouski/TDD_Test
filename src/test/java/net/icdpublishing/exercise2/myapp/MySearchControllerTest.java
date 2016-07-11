@@ -3,7 +3,6 @@ package net.icdpublishing.exercise2.myapp;
 
 
 import net.icdpublishing.exercise2.myapp.charging.services.ImaginaryChargingService;
-import net.icdpublishing.exercise2.myapp.customers.dao.CustomerDao;
 import net.icdpublishing.exercise2.myapp.customers.dao.CustomerNotFoundException;
 import net.icdpublishing.exercise2.myapp.customers.dao.HardcodedListOfCustomersImpl;
 import net.icdpublishing.exercise2.myapp.customers.domain.Customer;
@@ -153,6 +152,8 @@ public class MySearchControllerTest {
 
         Assert.assertEquals("Should return BT information, because customer is Premium",
                 unsortedEngineInfo, controller.handleRequest(request));
+        sources.clear();
+        unsortedEngineInfo.clear();
 
 	}
 
@@ -227,6 +228,7 @@ public class MySearchControllerTest {
         when(customer.getEmailAddress()).thenReturn(customerEmail);
         doThrow(new CustomerNotFoundException("Customer was not found")).when(customerImp).findCustomerByEmailAddress(customerEmail);
         controller.handleRequest(request);
+        sources.clear();
+        unsortedEngineInfo.clear();
     }
-
 }
