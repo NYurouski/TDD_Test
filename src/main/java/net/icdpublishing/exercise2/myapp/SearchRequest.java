@@ -6,7 +6,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 
 import net.icdpublishing.exercise2.myapp.customers.domain.Customer;
 import net.icdpublishing.exercise2.searchengine.requests.SimpleSurnameAndPostcodeQuery;
-
+//test new git
 public class SearchRequest {
 	private SimpleSurnameAndPostcodeQuery query;
 	private Customer customer;
